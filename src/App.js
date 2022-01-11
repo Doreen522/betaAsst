@@ -10,10 +10,11 @@ function App() {
   const [allowance2, setAllowance2] = useState(0)
   const [gross, setGross] = useState(0)
   const [grossDeduct, setGrossDeduct] = useState(0)
-  const [allowed, setAllowed] = useState(false)
+
   const [allowedEarnings1, setAllowedEarnings1] = useState(0)
   const [allowedEarnings2, setAllowedEarnings2] = useState(0)
-  const [allowedTotalEarnings, setAllowedTotalEarnings] = useState(0)
+  
+  // const [newAll,setNewAll] = useState([])
 
 
 
@@ -72,6 +73,9 @@ function App() {
       setAllowedEarnings1(allowance1)
 
     }
+    if(e.target.checked == false){
+      setAllowedEarnings1("")
+    }
 
   }
 
@@ -81,18 +85,22 @@ function App() {
       setAllowedEarnings2(allowance2)
 
     }
+    if(e.target.checked == false){
+      setAllowedEarnings2("")
+    }
 
   }
 
   let totalEarn = Number(allowedEarnings1) + Number(allowedEarnings2)
 
   const resetForm = () => {
-    setBasicSalary("")
-    setAllowance1("")
-    setAllowance1("")
-    setGrossDeduct("")
+    window.location.reload();
 
   };
+
+  // const addNew = () => {
+  //   setNewAll({newAll: [newAll,""]})
+  // }
 
 
 
@@ -133,7 +141,17 @@ function App() {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                       <Form.Check type="checkbox" label="EPF/ETF" onChange={handleCheck2} />
                     </Form.Group>
-                    <button>Add</button>
+                    {/* {newAll.map((allow,index) => {
+                      return(
+                        <div key={index}>
+                        <Form.Control type="number" value={allow}  />
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                      <Form.Check type="checkbox" label="EPF/ETF"  />
+                      </Form.Group>
+                      </div>
+                      )
+                    })} */}
+                    {/* <button onClick={addNew}>Add</button> */}
                     <button>Remove</button>
                   </Form.Group>
                   <Form.Group className="mb-3">
