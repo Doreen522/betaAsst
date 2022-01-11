@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Card, Container, InputGroup, FormControl } from 'react-bootstrap';
 import ViewSalary from './ViewSalary';
-import icon from './img/Icon color.svg'
+import icon from './img/Icon color.svg';
+import delete1 from './img/delete.svg'
+import './style.css';
 
 
 function App() {
@@ -13,7 +15,7 @@ function App() {
 
   const [allowedEarnings1, setAllowedEarnings1] = useState(0)
   const [allowedEarnings2, setAllowedEarnings2] = useState(0)
-  
+
   // const [newAll,setNewAll] = useState([])
 
 
@@ -73,7 +75,7 @@ function App() {
       setAllowedEarnings1(allowance1)
 
     }
-    if(e.target.checked == false){
+    if (e.target.checked == false) {
       setAllowedEarnings1("")
     }
 
@@ -85,7 +87,7 @@ function App() {
       setAllowedEarnings2(allowance2)
 
     }
-    if(e.target.checked == false){
+    if (e.target.checked == false) {
       setAllowedEarnings2("")
     }
 
@@ -112,35 +114,81 @@ function App() {
         <Row>
           <Col>
             <Card>
-              <Card.Title>Calculate Your Salary</Card.Title>
-              <div>
+              
+                <Row>
+                  <Col md={9}>
+                  <Card.Title>Calculate Your Salary</Card.Title></Col>
+                  <Col md={1}>
+                  
                 <img src={icon} onClick={resetForm} />
-              </div>
+                    </Col>
+                    <Col md={2}>
+                      <p>Reset</p>
+                    </Col>
+                    </Row>
+              
               <Card.Body>
                 <Form>
-                  <Form.Group className="mb-3" >
+                  <Row>
+                    <Col md={8}>
+                      <Form.Group className="mb-3" >
 
-                    <Form.Control type="number" placeholder="Enter Basic Salary" onChange={handleBasic} />
+                        <Form.Control type="number" placeholder="Enter Basic Salary" onChange={handleBasic} />
 
-                  </Form.Group>
+                      </Form.Group>
+                    </Col>
+                    <Col md={4}></Col>
+
+                  </Row>
+                  <Row>
+                    <Col md={8}>
+                      <Form.Label>Earnings</Form.Label>
+                      <div>
+                        <Form.Text className="text-muted">
+                          Allowance,Fixed Allowance,Bonus and etc.
+                        </Form.Text>
+                      </div>
+                    </Col>
+                    <Col md={4}></Col>
+                  </Row>
+                  <Row>
+                    <Col md={8}>
+                      <Form.Control type="number" onChange={handleAllowance1} />
+                    </Col>
+                    <Col md={3}>
+                      <Form.Group className="mb-3" controlId="formBasicCheckbox" >
+                        <Form.Check type="checkbox" label="EPF/ETF" onChange={handleCheck1} />
+                      </Form.Group>
+
+                    </Col>
+                    <Col md={1}>
+                      <button className='btn-delete'><img src={delete1} /></button>
+                    </Col>
+
+                  </Row>
+                  <Row>
+                    <Col md={8}>
+                      <Form.Control type="number" onChange={handleAllowance2} />
+                    </Col>
+                    <Col md={3}>
+                      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="EPF/ETF" onChange={handleCheck2} />
+
+                      </Form.Group>
+                    </Col>
+                    <Col md={1}>
+                      <button className='btn-delete'><img src={delete1} /></button>
+                    </Col>
+                  </Row>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Earnings</Form.Label>
-                    <div>
-                      <Form.Text className="text-muted">
-                        Allowance,Fixed Allowance,Bonus and etc.
-                      </Form.Text>
-                    </div>
 
-                    <Form.Control type="number" onChange={handleAllowance1} />
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox" >
-                      <Form.Check type="checkbox" label="EPF/ETF" onChange={handleCheck1} />
-                    </Form.Group>
 
-                    <Form.Control type="number" onChange={handleAllowance2} />
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                      <Form.Check type="checkbox" label="EPF/ETF" onChange={handleCheck2} />
-                    </Form.Group>
+
+
+
+
+
                     {/* {newAll.map((allow,index) => {
                       return(
                         <div key={index}>
@@ -152,22 +200,34 @@ function App() {
                       )
                     })} */}
                     {/* <button onClick={addNew}>Add</button> */}
-                    <button>Remove</button>
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Deductions </Form.Label>
-                    <div>
-                      <Form.Text className="text-muted">
-                        Salary Advances, Loan Deductions and all.
-                      </Form.Text>
-                    </div>
+                    <button>Add</button>
+                    <Row>
+                      <Col md={8}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Deductions </Form.Label>
+                          <div>
+                            <Form.Text className="text-muted">
+                              Salary Advances, Loan Deductions and all.
+                            </Form.Text>
+                          </div>
+                        </Form.Group>
+                      </Col>
+                      <Col md={4}></Col>
+                    </Row>
+                    <Row>
+                      <Col md={8}>
+                        <Form.Control type="number" onChange={handleDeduction} />
+                      </Col>
+                      <Col md={3}>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
 
 
-                    <Form.Control type="number" onChange={handleDeduction} />
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-
-                    </Form.Group>
-
+                        </Form.Group>
+                      </Col>
+                      <Col md={1}>
+                        <button className='btn-delete'><img src={delete1} /></button>
+                      </Col>
+                    </Row>
 
                   </Form.Group>
 
