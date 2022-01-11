@@ -1,3 +1,35 @@
+Started with crete react app
+installed bootstrap and react-bootstrap
+created a structure using react-bootstrap
+all components are functional component
+used react hooks
+2 components created
+ViewSalary component is a child component of App Component
+basic salaryand allowances passed as props to child component.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
